@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise 🎂</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+/* ---------------- Gift Section ---------------- */
+.gift-section{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.gift-box{
+    font-size:100px;
+    cursor:pointer;
+    transition:0.5s;
+}
+
+.gift-box:hover{
+    transform:scale(1.2) rotate(10deg);
+}
+
+.open-text{
+    margin-top:20px;
+    font-size:20px;
+}
+
+/* ---------------- Floating Hearts ---------------- */
+.heart{
+    position:fixed;
+    bottom:-20px;
+    animation:float 6s linear infinite;
+    color:rgba(255,255,255,0.8);
+}
+
+@keyframes float{
+    0%{transform:translateY(0) rotate(0);opacity:1;}
+    100%{transform:translateY(-100vh) rotate(360deg);opacity:0;}
+}
+
+/* ---------------- Main Content ---------------- */
+.main-content{
+    display:none;
+    padding:30px 15px;
+}
+
+h1{
+    font-size:32px;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{text-shadow:0 0 10px #fff;}
+    to{text-shadow:0 0 25px #ff4081;}
+}
+
+/* Fade Animation */
+.fade-in{
+    opacity:0;
+    transform:translateY(30px);
+    transition:1s ease;
+}
+.fade-in.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Main Image Floating */
+.image-box img{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    border:5px solid white;
+    object-fit:cover;
+    box-shadow:0 0 25px rgba(0,0,0,0.4);
+    animation:floatImage 3s ease-in-out infinite;
+}
+
+@keyframes floatImage{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0);}
+}
+
+.quotes{
+    margin:20px;
+    font-size:17px;
+}
+
+.shayari{
+    margin:25px;
+    background:rgba(255,255,255,0.2);
+    padding:20px;
+    border-radius:15px;
+}
+
+/* ---------------- Gallery ---------------- */
+.gallery{
+    margin-top:30px;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:15px;
+    padding:0 15px;
+}
+
+.gallery-grid img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    border-radius:15px;
+    cursor:pointer;
+    transition:0.5s;
+}
+
+.gallery-grid img:hover{
+    transform:scale(1.15) rotate(2deg);
+}
+
+/* Popup */
+#imagePopup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+#imagePopup img{
+    max-width:80%;
+    max-height:80%;
+    border-radius:20px;
+}
+
+.footer{
+    margin-top:40px;
+    margin-bottom:20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Gift Opening Screen -->
+<div class="gift-section" id="giftSection">
+    <div class="gift-box" onclick="openGift()">🎁</div>
+    <div class="open-text">Click the Gift to Open Your Surprise 💖</div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content" id="mainContent">
+
+    <h1 class="fade-in">🎉 Happy Birthday My Best Friend 🎉</h1>
+
+    <div class="image-box fade-in">
+        <img src="image 5.jpeg" alt="">
+    </div>
+
+    <div class="quotes fade-in">
+        🌸 "A best friend like you is life’s most precious gift." <br><br>
+        💖 "Your smile makes my world brighter." <br><br>
+        ✨ "Stay magical, stay happy forever."
+    </div>
+
+    <div class="shayari fade-in">
+       Tu meri zindagi ka woh hissa hai,<br>
+       Jahan sirf sachchai aur sukoon milta hai.<br>
+       Na kabhi zyada, na kabhi kam —<br>
+       Teri dosti hamesha perfect lagti hai.<br>
+       Happy Birthday meri classy dost 🌷 💖✨<br>
+        <br><br>
+        Krishna Ji tumhe hamesha khush rakhein,<br>
+tumhari zindagi ko pyar, shanti aur safalta se bhar dein.<br>
+Happy Birthday, may Kanha always guide you. ✨
+<br><br>
+        Zindagi hamesha perfect nahi hoti,<br>
+lekin kuch log usse beautiful bana dete hain.<br>
+Tu unhi logon mein se ek hai jo mushkil waqt mein bhi strong rehna jaanti hai.<br>
+Aaj ke din bas ye dua hai ki tu hamesha apne sapno ke aur kareeb jaati rahe.<br>
+Happy Birthday, keep shining always. ✨
+    </div>
+
+    <div class="gallery fade-in">
+        <h2>📸 Beautiful Memories</h2>
+        <div class="gallery-grid">
+            <img src="image 2.jpeg" onclick="openPopup(this.src)">
+            <img src="image 4.jpeg" onclick="openPopup(this.src)">
+            <img src="image 5.jpeg" onclick="openPopup(this.src)">
+            <img src="image 3.jpeg" onclick="openPopup(this.src)">
+        </div>
+    </div>
+
+    <div class="footer">
+        Made with ❤️ by Suraj
+    </div>
+</div>
+
+<!-- Popup Viewer -->
+<div id="imagePopup" onclick="closePopup()">
+    <img id="popupImg">
+</div>
+
+<!-- Background Music -->
+<audio id="birthdaySong" loop>
+    <source src="song.mp3.mpeg" type="audio/mpeg">
+</audio>
+
+<script>
+// Open Gift
+function openGift(){
+    document.getElementById("giftSection").style.display="none";
+    document.getElementById("mainContent").style.display="block";
+
+    const music=document.getElementById("birthdaySong");
+    music.volume=0.4;
+    music.play();
+}
+
+// Floating Hearts
+setInterval(()=>{
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=Math.random()*20+15+"px";
+    heart.style.animationDuration=Math.random()*3+3+"s";
+    document.body.appendChild(heart);
+    setTimeout(()=>{heart.remove();},6000);
+},500);
+
+// Fade In on Scroll
+const faders=document.querySelectorAll('.fade-in');
+const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+});
+faders.forEach(el=>observer.observe(el));
+
+// Popup
+function openPopup(src){
+    document.getElementById("imagePopup").style.display="flex";
+    document.getElementById("popupImg").src=src;
+}
+
+function closePopup(){
+    document.getElementById("imagePopup").style.display="none";
+}
+</script>
+
+</body>
+</html>
